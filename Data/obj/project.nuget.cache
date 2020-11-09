@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "lz8dHeu1mC7caob69ne+bBC2tDouo/J779AomqoSrn2Z95WcEYiCVBWs57f/BlFUfOzcsUfDyW8qfMhzYJCiig==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Алина Козловская\\source\\repos\\DataStructure\\Data\\DataStructure.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Алина Козловская\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\Алина Козловская\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}
