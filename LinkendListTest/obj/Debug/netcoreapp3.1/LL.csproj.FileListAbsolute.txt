@@ -1,0 +1,4 @@
+C:\Users\Алина Козловская\source\repos\DataStructure\LinkendListTest\obj\Debug\netcoreapp3.1\LL.csprojAssemblyReference.cache
+C:\Users\Алина Козловская\source\repos\DataStructure\LinkendListTest\obj\Debug\netcoreapp3.1\LL.AssemblyInfoInputs.cache
+C:\Users\Алина Козловская\source\repos\DataStructure\LinkendListTest\obj\Debug\netcoreapp3.1\LL.AssemblyInfo.cs
+C:\Users\Алина Козловская\source\repos\DataStructure\LinkendListTest\obj\Debug\netcoreapp3.1\LL.csproj.CoreCompileInputs.cache

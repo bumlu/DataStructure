@@ -13,7 +13,7 @@ namespace Data
         public ArrayList()
         {
             _array = new int[9];
-            Lengt = 0;
+            Length = 0;
         }
 
         // Фактическая длинна
@@ -53,6 +53,21 @@ namespace Data
             _array = newArray;
         }
 
+        //  Уменьшение длинны массива на 1/3%
+        private void DecreaseLenght(int number = 1)
+        {
+            int newLenght = _TrueLenght;
+            while (newLenght > 2 * Length + number)
+            {
+                newLenght = (int)(newLenght * 0.66 + 1);
+            }
+            int[] newArray = new int[newLenght];
+            Array.Copy(_array, newArray, _TrueLenght);
+
+            _array = newArray;
+        }
+       
+            
         //Для сравнения объектов двух массивов (чтобы не воспринимал
 
         public override bool Equals(object obj)
@@ -84,16 +99,16 @@ namespace Data
         }
 
         //добавление значения в начало
-        public void AddToTheBeginning (int value)
-        { 
-           if (_TrueLenght <= Length)
-                {
-                    IncreaseLenght();
-                }
-
-            for (int i = Length-1; i > 1; i--)
+        public void AddToTheBeginning(int value)
+        {
+            if (_TrueLenght <= Length)
             {
-                _array[i+1] = _array[i];
+                IncreaseLenght();
+            }
+
+            for (int i = Length - 1; i > 1; i--)
+            {
+                _array[i + 1] = _array[i];
             }
             _array[0] = value;
         }
@@ -108,25 +123,40 @@ namespace Data
 
             for (int i = Length; i > index; i--)
             {
-                _array[index] = _array[index-1];
+                _array[index] = _array[index - 1];
             }
             _array[index] = value;
         }
 
         //удаление из конца одного элемента
-        public void DeleteValueFromTheEnd (int value)
+        public void DeleteValueFromTheEnd(int value)
         {
+            if (Length == 0)
+            {
+                throw new Exception("Length=0");
+            }
+            Length--;
             if (_TrueLenght <= Length)
             {
-                IncreaseLenght();
+                DecreaseLenght();
             }
-
-              
-
-
+        }
             //удаление из начала одного элемента
+           public void DeleteValueFromTheBegining ()
+            {
+                if (Length == 0)
+                {
+                    throw new Exception("Length=0");
+                }
+            for (int i = 0; i < Length - 1; i++)
+            {
+                _array[i] = _array[i + 1];
+            }
+           }
+
+
         }
 
-
+    
 
 }
