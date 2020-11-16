@@ -14,16 +14,16 @@ namespace DataStructure.LL
 
         private Node _root;
 
-        
+
         public int this[int index]
         {
             get  //получение/доступ по индексу
             {
-                if ((index<0 ) || (index>Length))
+                if ((index < 0) || (index > Length))
                 {
                     throw new IndexOutOfRangeException();
                 }
-               Node tmp = _root;
+                Node tmp = _root;
                 for (int i = 1; i <= index; i++)
                 {
                     tmp = tmp.Next;
@@ -85,11 +85,11 @@ namespace DataStructure.LL
 
         public void AddByIndex(int index, int value)
         {
-            if (( index > Length) || (index <0))
+            if ((index > Length) || (index < 0))
             {
                 throw new IndexOutOfRangeException();
             }
-           else if (index == 0)
+            else if (index == 0)
             {
                 Node tmp = _root;
                 _root = new Node(value);
@@ -176,21 +176,21 @@ namespace DataStructure.LL
 
         }
         //удаление из начала одного элемента
-        public void DeleteValueFromTheBegining ()
+        public void DeleteValueFromTheBegining()
         {
             if (Length == 0)
             {
                 return;
             }
-            
+
             Node current = _root.Next;
-            _root = current; 
+            _root = current;
 
             Length--;
         }
 
         //удаление по индексу одного элемента
-        public void DeleteValueByIndex (int index)
+        public void DeleteValueByIndex(int index)
         {
             Node current = _root;
             if (index == 0)
@@ -212,7 +212,7 @@ namespace DataStructure.LL
         }
 
         // вернуть длину
-        public int GetLength ()
+        public int GetLength()
         {
             return Length;
         }
@@ -224,7 +224,7 @@ namespace DataStructure.LL
             Node current = new Node();
             current = _root;
 
-            while ( current.Value != value)
+            while (current.Value != value)
             {
                 index++;
                 current = current.Next;
@@ -234,8 +234,26 @@ namespace DataStructure.LL
                 }
             }
             return index;
-         }
+        }
         //реверс(123 -> 321)
+
+        public void Revers()
+        {
+            Node current = _root;
+            Node Next;
+            Node pref = null;
+
+            while (current != null)
+            {
+                Next = current.Next;
+                current.Next = pref;
+                pref = current;
+                current = Next;
+            }
+            _root = pref;
+        }
+
+
 
         //поиск значения максимального элемента
         public int FindMaxValue()
@@ -243,17 +261,54 @@ namespace DataStructure.LL
             Node current = new Node();
             current = _root;
             int max = current.Value;
+            if (Length == 0)
+            {
+                throw new NullReferenceException();
+            }
             do
             {
-                if (max < current.Next.Value)
+                if ((current.Next != null) && (max < current.Next.Value))
                 {
                     max = current.Next.Value;
-                   
+
                 }
-                current = current.Next;
+                if (current.Next != null)
+                {
+                    current = current.Next;
+                }
             }
             while (current.Next != null);
             return max;
+        }
+        //поиск значения минимального элемента
+
+        public int FindMinValue()
+        {
+            Node current = new Node();
+            current = _root;
+            int min = current.Value;
+            if (Length == 0)
+            {
+                throw new NullReferenceException();
+            }
+            do
+            {
+                if ((current.Next != null) && (min > current.Next.Value))
+                {
+                    min = current.Next.Value;
+
+                }
+                if (current.Next != null)
+                {
+                    current = current.Next;
+                }
+            }
+            while (current.Next != null);
+            return min;
+        }
+
+
+    }
         }
 
 
@@ -261,5 +316,3 @@ namespace DataStructure.LL
 
 
 
-    }
-}

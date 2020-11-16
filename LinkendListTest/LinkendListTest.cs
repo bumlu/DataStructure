@@ -115,17 +115,17 @@ namespace LinkendListTest
         //изменение по индексу
 
         [TestCase(new int[] { 1, 2, 3, 4 }, 3, 7, new int[] { 1, 2, 3, 7 })]
-        public void EditByIndexTest(int[] array, int index, int value, int [] expArray)
+        public void EditByIndexTest(int[] array, int index, int value, int[] expArray)
         {
             LinkedList expected = new LinkedList(expArray);
             LinkedList actual = new LinkedList(array);
-            
-            actual [index] =  value;
+
+            actual[index] = value;
 
             Assert.AreEqual(expected, actual);
         }
 
-        [TestCase(new int[] { 1, 2, 3, 4 }, 7,0)]
+        [TestCase(new int[] { 1, 2, 3, 4 }, 7, 0)]
         public void EditByIndexTestNegative(int[] array, int index, int value)
         {
             LinkedList actual = new LinkedList(array);
@@ -133,21 +133,46 @@ namespace LinkendListTest
         }
 
         // реверс (123 -> 321)
-        ////[TestCase(new int[] { 1, 2, 3, 4 }, 3, 7, new int[] { 1, 2, 3, 7 })]
-        ///
+        [TestCase(new int[] { 1, 2, 3, 4, 5 }, new int[] { 5, 4, 3, 2, 1 })]
+        [TestCase(new int[] { 6, 1, 3, 6, 1 }, new int[] { 1, 6, 3, 1, 6 })]
+        [TestCase(new int[] { 1 }, new int[] { 1 })]
+        public void ReversTest(int[] array, int[] expArray)
+        {
+            LinkedList expected = new LinkedList(expArray);
+            LinkedList actual = new LinkedList(array);
+            actual.Revers();
+
+            Assert.AreEqual(expected, actual);
+        }
+
 
         //поиск значения максимального элемента
 
         [TestCase(new int[] { 1, 2, 3, 4 }, 4)]
         [TestCase(new int[] { 1 }, 1)]
-        public void FindMaxValueTest (int[] array, int expected)
+        [TestCase(new int[] { 0 }, 0)]
+        public void FindMaxValueTest(int[] array, int expected)
         {
             LinkedList a = new LinkedList(array);
             int actual = a.FindMaxValue();
 
             Assert.AreEqual(expected, actual);
         }
-    }
 
-} 
+        //поиск значения минимального элемента
+
+        [TestCase(new int[] { 1, 2, 3, 4 }, 1)]
+        [TestCase(new int[] { 6, 2, 3, 4 }, 2)]
+        [TestCase(new int[] { 1 }, 1)]
+        [TestCase(new int[] { 0 }, 0)]
+        public void FindMinValueTest(int[] array, int expected)
+        {
+            LinkedList a = new LinkedList(array);
+            int actual = a.FindMinValue();
+
+            Assert.AreEqual(expected, actual);
+        }
+
+    }
+}
 
