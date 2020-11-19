@@ -47,6 +47,7 @@ namespace DataStructure.LL
             }
         }
 
+        //3 конструктора
         public LinkedList()
         {
             Length = 0;
@@ -306,10 +307,218 @@ namespace DataStructure.LL
             while (current.Next != null);
             return min;
         }
+        //поиск индекс максимального элемента
+        public int FindIndexForMaxValue()
+        {
+            Node current = new Node();
+            current = _root;
+            int max = current.Value;
+            int index = 0;
+            int indexMax = index;
 
+            if (Length == 0)
+            {
+                throw new NullReferenceException();
+            }
+            do
+            {
+                if ((current.Next != null) && (max < current.Next.Value))
+                {
+                    max = current.Next.Value;
+                    index = index + 1;
+                }
+                if (current.Next != null)
+                {
+                    current = current.Next;
+                    indexMax++;
+                }
+            }
+            while (current.Next != null);
 
-    }
+            return index;
         }
+
+        //поиск индекс минимального элемента
+        public int FindIndexForMinValue()
+        {
+            Node current = new Node();
+            current = _root;
+            int min = current.Value;
+            int index = 0;
+            int indexMin = index;
+
+            if (Length == 0)
+            {
+                throw new NullReferenceException();
+            }
+            do
+            {
+                if ((current.Next != null) && (min > current.Next.Value))
+                {
+                    min = current.Next.Value;
+                    index = index + 1;
+                }
+                if (current.Next != null)
+                {
+                    current = current.Next;
+                    indexMin++;
+                }
+            }
+            while (current.Next != null);
+
+            return index;
+        }
+
+        //сортировка по возрастанию
+
+
+        //сортировка по убыванию
+
+        //удаление по значению первого
+
+        public void  DeleteValue (int value)
+        {
+            if (_root == null) return;
+
+            Node current = _root;
+
+            if (_root.Value == value)
+            {
+                _root = _root.Next;
+                Length--;
+                return;
+            }
+          
+            while (current.Next.Value != value)
+            {
+                current = current.Next;
+                    if (current.Next == null) return;
+            }
+             
+           current.Next = current.Next.Next;
+           Length -- ;
+
+        }
+
+        //удаление по значению всех
+
+        public void DeleteAllValues(int value)
+        {
+            while (_root != null && _root.Value == value)
+            {
+                DeleteValue (value);
+            }
+
+            Node current = _root;
+            {
+                while (current != null && current.Value == value)
+                {
+                    if (current.Next.Value == value)
+                    {
+                        current.Next = current.Next.Next;
+                        Length--;
+                    }
+                    current = current.Next;
+                }
+
+            }
+        }
+
+
+        //добавление массива в конец
+        //добавление массива в начало
+        //добавление массива по индексу
+
+        //удаление из конца N элементов
+
+        public void DeleteFromTheEndByNum (int number)
+            {
+                if ((number <= Length) && ( number > 0))
+                {
+                    if ( number == Length )
+                    {
+                        _root = null;
+                        Length = 0;
+                    }
+                    else if (Length- number == 1)
+                    {
+                        _root.Next = null;
+                        Length = 1;
+                    }
+                    else
+                    {
+                        Node current = _root;
+                       for (int i = 1; i < Length - number; i++)
+                        { 
+                            current = current.Next;
+                        }
+
+                        current.Next = null;
+                        Length -= number;
+                    }
+                }
+                
+            }
+
+        //удаление из начала N элементов
+        public void DeleteByNumFromTheBeginning(int number)
+        {
+            if ((number <= Length) && (number > 0))
+            {
+                if (number == Length)
+                {
+                    _root = null;
+                    Length = 0;
+                }
+                else
+                {
+                    Node current = _root.Next;
+                    for (int i = 1; i < number; i++)
+                    {
+                        current = current.Next;
+                    }
+                    _root = current;
+                    Length -= number;
+
+                }
+            }
+        }
+
+            //удаление по индексу N элементов
+            public void DeleteNumbeFromIndex (int index, int number)
+            {
+            Node current = _root;
+            if (index == 0) 
+            {
+                DeleteByNumFromTheBeginning(number);
+            }
+
+            else 
+            {
+
+                for (int i = 1; i < index; i++)
+                {
+                    current = current.Next;
+                }
+                Node currentT = current.Next;
+                for (int j = 0; j < number; j++)
+                {
+                    currentT = currentT.Next;
+
+                }
+                current.Next = currentT;
+                Length = Length - number;
+            }
+
+            }
+        }
+   }
+
+    
+
+            
+
+          
 
 
 

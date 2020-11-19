@@ -173,6 +173,97 @@ namespace LinkendListTest
             Assert.AreEqual(expected, actual);
         }
 
+        //поиск индекс максимального элемента
+        [TestCase(new int[] { 1, 2, 3, 4 }, 3)]
+        [TestCase(new int[] { 6, 2, 3, 4 }, 0)]
+        [TestCase(new int[] { 1 }, 0)]
+        [TestCase(new int[] { 0 }, 0)]
+
+        public void FindIndexForMaxValueTest(int[] array, int expected)
+        {
+            LinkedList a = new LinkedList(array);
+            int actual = a.FindIndexForMaxValue();
+            Assert.AreEqual(expected, actual);
+
+        }
+
+        //поиск индекс минимального элемента
+        [TestCase(new int[] { 1, 2, 3, 4 }, 0)]
+        [TestCase(new int[] { 6, 2, 3, 4 }, 1)]
+        [TestCase(new int[] { 1 }, 0)]
+        [TestCase(new int[] { 0 }, 0)]
+
+        public void FindIndexForMinValueTest(int[] array, int expected)
+        {
+            LinkedList a = new LinkedList(array);
+            int actual = a.FindIndexForMinValue();
+            Assert.AreEqual(expected, actual);
+        }
+
+        //сортировка по возрастанию
+
+        //сортировка по убыванию
+
+        //удаление по значению первого
+
+        [TestCase(new int[] { 5,2,57,8,4,2 }, 5, new int[] { 2, 57, 8, 4, 2 })]
+        [TestCase(new int[] { 1, 2, 3, 4 }, 2, new int[] { 1, 3, 4 })]
+        [TestCase(new int[] { 6, 2, 3, 4 }, 0, new int[] { 6, 2, 3, 4 })]
+        [TestCase(new int[] { 1 }, 1, new int[] { })]
+        [TestCase(new int[] {  },0 , new int[] { })]
+
+        public void DeleteValueTest(int[] array, int value, int [] exArray)
+        {
+            LinkedList a = new LinkedList(array);
+            LinkedList expected = new LinkedList(exArray);
+            a.DeleteValue (value);
+            Assert.AreEqual(expected, a);
+        }
+
+        //удаление по значению всех
+
+        public void DeleteAllValues
+       //добавление массива в конец
+       //добавление массива в начало
+       //добавление массива по индексу
+       //удаление из конца N элементов
+
+       [TestCase(new int[] { 1, 2, 3, 4 }, 0, new int[] { 1, 2, 3, 4 })]
+        [TestCase(new int[] { 6, 2, 3, 4 }, 3, new int[] { 6 })]
+        [TestCase(new int[] { 1 }, 1, new int[] { })]
+        [TestCase(new int[] { 6, 2, 56, 2 }, 2, new int[] { 6, 2 })]
+        public void DeleteFromTheEndByNumTest(int[] array, int number, int[] exArray)
+        {
+            LinkedList expected = new LinkedList(exArray);
+            LinkedList a = new LinkedList(array);
+            a.DeleteFromTheEndByNum(number);
+            Assert.AreEqual(expected, a);
+
+        }
+        //удаление из начала N элементов
+        [TestCase(new int[] { 1, 2, 3, 4 }, 0, new int[] { 1, 2, 3, 4 })]
+        [TestCase(new int[] { 6, 2, 3, 4 }, 3, new int[] { 4 })]
+        [TestCase(new int[] { 1 }, 1, new int[] { })]
+        [TestCase(new int[] { 6, 2, 56, 2 }, 2, new int[] { 56, 2 })]
+        public void DeleteByNumFromTheBeginningTest(int[] array, int number, int[] exArray)
+        {
+            LinkedList expected = new LinkedList(exArray);
+            LinkedList a = new LinkedList(array);
+            a.DeleteByNumFromTheBeginning(number);
+            Assert.AreEqual(expected, a);
+        }
+            //удаление по индексу N элементов
+        [TestCase(new int[] { 1, 2, 3, 4 }, 1,3, new int[] {1})]
+        [TestCase(new int[] { 6, 2, 3, 4,46,1,5 }, 3,1, new int[] { 6, 2, 3, 46, 1, 5 })]
+        [TestCase(new int[] { 1 }, 0,1, new int[] { })]
+        [TestCase(new int[] { 6, 2, 56, 2 }, 2,0, new int[] { 6, 2, 56, 2 })]
+        public void DeleteNumbeFromIndexTest(int[] array,int index, int number, int[] exArray)
+        {
+            LinkedList expected = new LinkedList(exArray);
+            LinkedList a = new LinkedList(array);
+            a.DeleteNumbeFromIndex (index,number);
+            Assert.AreEqual(expected, a);
+        }
     }
 }
 
