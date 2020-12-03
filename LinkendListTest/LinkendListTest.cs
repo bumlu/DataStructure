@@ -221,14 +221,51 @@ namespace LinkendListTest
         }
 
         //удаление по значению всех
+        [TestCase(new int[] { 1, 2, 3, 4 }, 0, new int[] { 1, 2, 3, 4 })]
+        [TestCase(new int[] { 6, 2, 3, 4,3 }, 3, new int[] { 6,2,4 })]
+        [TestCase(new int[] { 1 }, 1, new int[] { })]
+        [TestCase(new int[] { 2, 2, 2, 2 }, 2, new int[] {  })]
 
-        public void DeleteAllValues
-       //добавление массива в конец
-       //добавление массива в начало
-       //добавление массива по индексу
-       //удаление из конца N элементов
+        public void DeleteAllValuesTest(int[] array, int value, int[] exArray)
+        {
+            LinkedList a = new LinkedList(array);
+            LinkedList expected = new LinkedList(exArray);
+            a.DeleteAllValues(value);
+            Assert.AreEqual(expected, a);
+        }
 
-       [TestCase(new int[] { 1, 2, 3, 4 }, 0, new int[] { 1, 2, 3, 4 })]
+        //добавление массива в конец
+
+        //[TestCase(new int[] { 1, 2, 3, 4 }, new int[] { 1, 2, 3, 4 }, new int[] { 1, 2, 3, 4, 1, 2, 3, 4 })]
+        //[TestCase(new int[] { 6, 2, 3, 4, 3 }, new int[] { 3 }, new int[] { 6, 2, 3, 4, 3, 3 })]
+        //[TestCase(new int[] {  }, new int[] { 1 }, new int[] { 1 })]
+        //[TestCase(new int[] { 2, 2, 2, 2 }, new int[] { 2 }, new int[] { 2, 2, 2, 2, 2 })]
+        //public void AddArrayToTheEndTest(int[] array, int[] arrayAdd, int[] exArray)
+        //{
+        //    LinkedList a = new LinkedList(array);
+        //    LinkedList expected = new LinkedList(exArray);
+        //    a.AddArrayToTheEnd(arrayAdd);
+        //    Assert.AreEqual(expected, a);
+        //}
+
+        //добавление массива в начало
+
+        [TestCase(new int[] { 1, 2, 3, 4 }, new int[] { 1, 2, 3, 4 }, new int[] { 1, 2, 3, 4, 1, 2, 3, 4 })]
+        [TestCase(new int[] { 6, 2, 3, 4, 3 }, new int[] { 3 }, new int[] { 3, 6, 2, 3, 4, 3})]
+        [TestCase(new int[] {  }, new int[] { 1 }, new int[] { 1 })]
+        [TestCase(new int[] { 2, 2, 2, 2 }, new int[] { 2 }, new int[] { 2, 2, 2, 2, 2 })]
+        public void AddArrayToTheBegginingTest(int[] array, int[] arrayAdd, int[] exArray)
+        {
+            LinkedList a = new LinkedList(array);
+            LinkedList expected = new LinkedList(exArray);
+            a. AddArrayToTheBeggining(arrayAdd);
+            Assert.AreEqual(expected, a);
+        }
+
+        //добавление массива по индексу
+        //удаление из конца N элементов
+
+        [TestCase(new int[] { 1, 2, 3, 4 }, 0, new int[] { 1, 2, 3, 4 })]
         [TestCase(new int[] { 6, 2, 3, 4 }, 3, new int[] { 6 })]
         [TestCase(new int[] { 1 }, 1, new int[] { })]
         [TestCase(new int[] { 6, 2, 56, 2 }, 2, new int[] { 6, 2 })]

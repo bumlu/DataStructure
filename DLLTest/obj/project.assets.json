@@ -4644,11 +4644,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Алина Козловская\\source\\repos\\DataStructure\\ArrayListTest\\ALT.csproj",
-      "projectName": "ALT",
-      "projectPath": "C:\\Users\\Алина Козловская\\source\\repos\\DataStructure\\ArrayListTest\\ALT.csproj",
+      "projectUniqueName": "C:\\Users\\Алина Козловская\\source\\repos\\DataStructure\\DLLTest\\DLLTest.csproj",
+      "projectName": "DLLTest",
+      "projectPath": "C:\\Users\\Алина Козловская\\source\\repos\\DataStructure\\DLLTest\\DLLTest.csproj",
       "packagesPath": "C:\\Users\\Алина Козловская\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Алина Козловская\\source\\repos\\DataStructure\\ArrayListTest\\obj\\",
+      "outputPath": "C:\\Users\\Алина Козловская\\source\\repos\\DataStructure\\DLLTest\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Алина Козловская\\AppData\\Roaming\\NuGet\\NuGet.Config",

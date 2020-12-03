@@ -236,6 +236,8 @@ namespace DataStructure.LL
             }
             return index;
         }
+
+
         //реверс(123 -> 321)
 
         public void Revers()
@@ -376,7 +378,7 @@ namespace DataStructure.LL
 
         //удаление по значению первого
 
-        public void  DeleteValue (int value)
+        public void DeleteValue(int value)
         {
             if (_root == null) return;
 
@@ -388,15 +390,15 @@ namespace DataStructure.LL
                 Length--;
                 return;
             }
-          
+
             while (current.Next.Value != value)
             {
                 current = current.Next;
-                    if (current.Next == null) return;
+                if (current.Next == null) return;
             }
-             
-           current.Next = current.Next.Next;
-           Length -- ;
+
+            current.Next = current.Next.Next;
+            Length--;
 
         }
 
@@ -404,29 +406,66 @@ namespace DataStructure.LL
 
         public void DeleteAllValues(int value)
         {
-            while (_root != null && _root.Value == value)
-            {
-                DeleteValue (value);
-            }
 
+            if (_root != null && _root.Value == value)
+            {
+                _root = _root.Next;
+
+            }
             Node current = _root;
+            while (current.Next != null)
             {
-                while (current != null && current.Value == value)
+                if (current.Next.Value == value)
                 {
-                    if (current.Next.Value == value)
-                    {
-                        current.Next = current.Next.Next;
-                        Length--;
-                    }
-                    current = current.Next;
+                    current.Next = current.Next.Next;
+                    Length--;
                 }
-
+                current = current.Next;
+                if (current == null) return;
             }
+
         }
 
 
         //добавление массива в конец
+
+        //public void AddArrayToTheEnd(int [] array)
+        //{
+        //    if (array.Length <= Length)
+        //        {
+        //            IncreaseLength(array.Length);
+        //            Length += argumentArray.Length;
+        //        }
+        //        for (int i = Length - argumentArray.Length; i < Length; i++)
+        //        {
+        //            array[i] = argumentArray[i - (Length - argumentArray.Length)];
+        //        }
+            
+           
+        //}
+
         //добавление массива в начало
+        public void AddArrayToTheBeggining(int[] array)
+        {
+           
+            LinkedList KK = new LinkedList(array);
+            Node currentKK = KK._root;
+            if (Length == 0)
+            {
+                _root = KK._root;
+            }
+            else
+            {
+                while (currentKK.Next != null)
+                {
+                    currentKK = currentKK.Next;
+                }
+                currentKK.Next = _root;
+                _root = KK._root;
+            }
+            Length += array.Length;
+        }
+
         //добавление массива по индексу
 
         //удаление из конца N элементов
